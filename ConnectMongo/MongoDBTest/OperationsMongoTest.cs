@@ -20,5 +20,11 @@ namespace MongoDBTest
             var result = new MongoDBRepository.Repository("test").List("borough", "Manhattan").Result;
             result.Count.Should().Be(10259);
         }
+        [TestMethod]
+        public void ListMenorQueRestaurants()
+        {
+            var result = new MongoDBRepository.Repository("test").ListMenorQue("grades.score", 10).Result;
+            result.Count.Should().Be(19065);
+        }
     }
 }
