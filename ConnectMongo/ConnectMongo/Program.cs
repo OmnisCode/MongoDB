@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDBRepository;
 
 namespace ConnectMongo
 {
@@ -12,11 +13,7 @@ namespace ConnectMongo
     {
         static void Main(string[] args)
         {
-             IMongoClient _client;
-             IMongoDatabase _database;
-
-            _client = new MongoClient();
-            _database = _client.GetDatabase("test");
+            var totalcollection = new Repository("test").Total("restaurants").Result;            
         }
     }
 }
