@@ -38,5 +38,13 @@ namespace MongoDBRepository
 
             return count;
         }
+
+        public async Task<List<BsonDocument>> List(string field, string value)
+        {
+            var collection = _database.GetCollection<BsonDocument>("restaurants");
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var result = await collection.Find(filter).ToListAsync();
+            return result;
+        }
     }
 }
